@@ -16,6 +16,8 @@ add_library(${LIB_NAME} SHARED
     include/map.hpp
 
     include/list.hpp
+    include/list.h
+    
 )
 
 target_include_directories(${LIB_NAME} INTERFACE 

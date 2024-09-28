@@ -10,5 +10,6 @@ project(MHCLib)
 include_directories(${CMAKE_SOURCE_DIR}/common)
 
 add_subdirectory(data_structures)
+# add_subdirectory(data_structures/ds_funcs)
 add_subdirectory(algorithms)
 add_subdirectory(demo)
