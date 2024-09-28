@@ -31,8 +31,10 @@ T LinkedList<T>::at(size_t pos) {
 
 template<typename T>
 void LinkedList<T>::clear() {
+    ln temp;
+
     while (m_head) {
-        ln temp = m_head;
+        temp = m_head;
         m_head = m_head->next;
         delete temp;
     }

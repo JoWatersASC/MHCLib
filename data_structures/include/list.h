@@ -1,6 +1,7 @@
 #pragma once
 
 #include<exception>
+#include"common.h"
 
 namespace mhc
 {
@@ -121,12 +122,66 @@ private:
 }
 
 
-using namespace mhc::data_structs;
+
+
+namespace mhc {
+
+using namespace data_structs;
 template<typename T>
 void reverse(LinkedList<T>& list) {
+    ListNode<T>* prev = nullptr;
+    ListNode<T>* curr = list.front();
+    ListNode<T>* next = curr->next;
 
+    while (next) {
+        curr->next = prev;
+        curr = next;
+        next = next->next;
+        prev = curr;
+    }
 }
 template<typename T>
+std::ostream& operator<<(LinkedList<T> list, std::ostream& out) {
+    ListNode<T>* _head = list.front();
+
+    out << "{";
+    while (_head) {
+        out << _head->val << ", ";
+        _head = _head->next;
+    }
+    out << "\b\b}";
+
+    return out;
+}
+
+template<typename T>
 void reverse(DoubleLinkedList<T>& list) {
+    DoubleListNode<T>* pr   = list.front()->prev;
+    DoubleListNode<T>* curr = list.front();
+    DoubleListNode<T>* nx   = list.front()->next;
+
+    while (nx && curr) {
+        dln temp = curr;
+        curr->next = temp->prev;
+        curr->prev = temp->next;
+        
+        curr = curr->next;
+        pr = curr->prev;
+        nx = curr->next;
+    }
+}
+template<typename T>
+std::ostream& operator<<(DoubleLinkedList<T> list, std::ostream& out) {
+    DoubleListNode<T>* _head = list.front();
+
+    out << "{";
+    while (_head) {
+        out << _head->val << ", ";
+        _head = _head->next;
+    }
+    out << "\b\b}";
+
+    return out;
+}
 
 }
