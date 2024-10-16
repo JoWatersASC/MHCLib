@@ -7,20 +7,33 @@ set(LIB_NAME "MHCds")
 
 include_directories(include funcs)
 
-add_library(${LIB_NAME} SHARED
-    funcs/list_funcs.cpp
-    include/vector.hpp
-    include/queue.hpp
-    include/stack.hpp
-    include/set.hpp
-    include/map.hpp
-
-    include/list.hpp
+set(HEADERS
     include/list.h
-    
+    include/stack.h
+    include/queue.h
+)
+set(IMPLEMENTATIONS
+    impl/list.hpp
+    impl/stack.hpp
+    impl/queue.hpp
+)
+
+add_library(${LIB_NAME} SHARED
+    src/mhcds.cpp
+    include/ds_common.h
+
+    ${HEADERS}
+    ${IMPLEMENTATIONS}
+    # include/vector.hpp
+    # include/queue.hpp
+    # include/set.hpp
+    # include/map.hpp    
 )
 
 target_include_directories(${LIB_NAME} INTERFACE 
     ${CMAKE_CURRENT_SOURCE_DIR}/include 
     ${CMAKE_SOURCE_DIR}/common
 )
+
+source_group("Implementation Files" FILES ${IMPLEMENTATIONS})
+source_group("Header Files" FILES ${HEADERS})

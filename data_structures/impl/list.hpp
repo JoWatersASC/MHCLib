@@ -1,8 +1,10 @@
+#pragma once
+
 #include"list.h"
 
 namespace mhc 
 {
-namespace data_structs
+namespace ds
 {
 
 template<typename T>
@@ -155,7 +157,7 @@ T LinkedList<T>::operator[] (size_t pos) {
 
 namespace mhc 
 {
-namespace data_structs
+namespace ds
 {
 
 template<typename T>
